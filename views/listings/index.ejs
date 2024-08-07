@@ -1,0 +1,88 @@
+<% layout("./layouts/boilerplate") %>
+  <body>
+    <style>
+      #filters{
+        display: flex;
+        flex-wrap: wrap;
+      }
+      .filter{
+        text-align: center;
+        margin-right: 2.5rem;
+        margin-top: 2rem;
+        opacity: 0.7;
+      }
+
+      .filter:hover{
+        opacity: 1;
+        cursor: pointer;
+      }
+    </style>
+
+    <div id="filters">
+      <div class="filter">
+        <div><i class="fa-solid fa-fire"></i></div>
+        <p>Trending</p>
+      </div>
+      <div class="filter">
+        <div><i class="fa-solid fa-house"></i></div>
+        <p>BioDiversity</p>
+      </div>
+      <div class="filter">
+        <div><i class="fa-solid fa-seedling"></i></div>
+        <p>ForestView</p>
+      </div>
+      <div class="filter">
+        <div><i class="fa-solid fa-spa"></i></div>
+        <p>GardenView</p>
+      </div>
+      <div class="filter">
+        <div><i class="fa-solid fa-umbrella-beach"></i></div>
+        <p>ValleyView</p>
+      </div>
+      <div class="filter">
+        <div><i class="fa-solid fa-mountain-sun"></i></div>
+        <p>MountainView</p>
+      </div>
+      <div class="filter">
+        <div><i class="fa-brands fa-fort-awesome"></i></div>
+        <p>DesertView</p>
+      </div>
+      <div class="filter">
+        <div><i class="fa-solid fa-bed"></i></div>
+        <p>Hotels</p>
+      </div>
+      <div class="filter">
+        <div><i class="fa-solid fa-fire-flame-curved"></i></div>
+        <p>Popular</p>
+      </div>
+      <div class="filter">
+        <div><i class="fa-solid fa-earth-americas"></i></div>
+        <p>CountrySIde</p>
+      </div>
+      <div class="filter">
+        <div><i class="fa-solid fa-wand-magic-sparkles"></i></div>
+        <p>New</p>
+      </div>
+    </div>
+    <div class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-1 mt-3 ">
+      <% for (let listing of allListings) { %>
+        <a href="/listings/<%= listing._id %>" class="listing-link" >
+          <div class="card col listing-card" style="width: 22rem;" >
+            <img src="<%= listing.image.url %>" 
+                 class="card-img-top"  
+                 alt="listing_image" 
+                 style="height: 15rem;" 
+            />
+            <div class="card-img-overlay" id="heartover"><b>&#9825;</b></div>
+            <!-- <div class="card-img-overlay" id="heartover"><b>&#9825;</b></div> -->
+            <div class="card-body">
+              <p class="card-text">
+                <b><%= listing.title %></b> <br />
+                &#8377; <%= listing.price.toLocaleString("en-IN") %> /ride
+              </p>
+            </div>
+          </div>
+        </a>
+      <% } %> 
+    </div>
+  </body>
